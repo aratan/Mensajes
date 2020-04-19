@@ -1,0 +1,76 @@
+Para acceder a ipfs puedes user localhost:8080 si tienes ipfs instalado e invocando el daemon.
+localhost:8080/ipfs/
+localhost:8080/ipns/
+
+También puedes tener acceso de lectura por una puerta de enlace de solo lectura, sin tener instalada la 
+aplicación ni compartir con la red.
+==========================================
+https://ipfs.infura.io/ipfs/
+https://ipfs.io/ipfs/
+https://ipfs.io/ipns/
+https://cloudflare-ipfs.com/ipfs/
+https://cloudflare-ipfs.com/ipns/
+https://gateway.pinata.cloud/ipfs/QmYVd8qstdXtTd1quwv4nJen6XprykxQRLo67Jy7WyiLMB/
+https://gateway.pinata.cloud/ipns/Qmb1VVr5xjpXHCTcVm3KF3i88GLFXSetjcxL7PQJRviXSy
+https://ipfs-gateway.live.mesh.world/ipns/QmeuWsNUaFn1jZsVmNHSnSUGiqXYu6QtrFHUY8wQ8NjhDE
+==========================================
+
+
+============================================
+cloudflare-ipfs.com/ipfs/
+cloudflare-ipfs.com/ipns/
+https://ipfs.io/ipfs/Qmc2o4ZNtbinEmRF9UGouBYTuiHbtCSShMFRbBY5ZiZDmU/
+https://ipfs.io/ipfs/QmS3jqUFcmRxFQe1kKAuXb6SRPTNUmHUjQYY3ii2aPuRvp
+https://ipfs.io/ipfs/QmdhH4JdVUMgeQ8e35ygTkjjhfJDNkQqT1BDWAMJYrNpa2/AANTV.m3u8
+https://ipfs.infura.io/ipfs/QmQQfD1ztg1aG82VmUmutusbxn7tL4c2o1qHv1ivyWbNj6/
+
+https://ipfs.io/ipfs/QmdhH4JdVUMgeQ8e35ygTkjjhfJDNkQqT1BDWAMJYrNpa2/AANTV.m3u8
+
+Ejemplo completo:
+http://127.0.0.1:8080/ipfs/QmS3jqUFcmRxFQe1kKAuXb6SRPTNUmHUjQYY3ii2aPuRvp
+https://cloudflare-ipfs.com/ipfs/QmS3jqUFcmRxFQe1kKAuXb6SRPTNUmHUjQYY3ii2aPuRvp
+https://cloudflare-ipfs.com/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog
+https://cloudflare-ipfs.com/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog
+https://ipfs.io/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog
+
+https://ipfs-mirror-N.QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog/live.m3u8
+
+https://ipfs.io/ipfs/Qmc2o4ZNtbinEmRF9UGouBYTuiHbtCSShMFRbBY5ZiZDmU/
+https://ipfs.io/ipfs/QmS3jqUFcmRxFQe1kKAuXb6SRPTNUmHUjQYY3ii2aPuRvp
+
+https://ipfs.io/ipfs/QmdhH4JdVUMgeQ8e35ygTkjjhfJDNkQqT1BDWAMJYrNpa2/AANTV.m3u8
+https://cloudflare-ipfs.com/ipfs/QmdhH4JdVUMgeQ8e35ygTkjjhfJDNkQqT1BDWAMJYrNpa2/AANTV.m3u8
+
+
+las terminaciones ipfs son para ficheros, las terminaciones ipns actuan como un DNS en la red.
+
+DNSLink:  vitin.ga
+https://ipfs.io/ipfs/Qmc2o4ZNtbinEmRF9UGouBYTuiHbtCSShMFRbBY5ZiZDmU/
+
+1/	Crea sitio web en  ipfs  puedes guardar ficheros o carpetas con todo su comtenido:
+	ipfs add -r Carpeta
+		(Carpeta)-castillo.jpg
+        		 -ejemplo.txt
+2/	Ver el sitio:
+	https://gateway.ipfs.io/ipfs/hash
+
+3/	Modificar sitio, modifica el fichero y sigue de nuevo el paso 1, te dara otro hash.
+	ipfs add -r Carpeta
+
+4/	Ver la modificación:
+		https://gateway.ipfs.io/ipfs/Bhash
+5/	Publicamos cualquier hash a tu ID,p ara ipns, el ID.
+	ipfs name publish Bhash
+
+6/	Ver el sitio por IPNS:
+	https://gateway.ipfs.io/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog
+
+7/ 	Conecta con un DNS/Dominio gratis:
+	https://my.freenom.com/clientarea.php?action=domaindetails
+
+Cuando quieres acceder al contenido de una carpeta, tienes que poner el hash de la carpeta y 
+el nombre del fichero al que quieres acceder.
+Ejemplo:
+	https://cloudflare-ipfs.com/ipfs/QmdbaSQbGU6Wo9i5LyWWVLuU8g6WrYpWh2K4Li4QuuE8Fr/ejemplo.txt
+
+

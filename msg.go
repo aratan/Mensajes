@@ -208,17 +208,17 @@ func main() {
 
 		encryptedString, _ := encryptString(stringToEncrypt,encryptionKey)
 		// añado subir ficheros cifrados a ipfs 
-		sh := shell.NewShell("localhost:5002")
+		sh := shell.NewShell("localhost:5001")
 		cid, err := sh.Add(strings.NewReader(encryptedString))
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "error: %s", err)
 			os.Exit(1)
 		}
-        fmt.Printf("Subido '%s'\n", cid)
+        fmt.Printf("'%s'\n", cid)
         //os.stdout("%s", cid)
 		//fmt.Printf("https://gateway.pinata.cloud/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog \n")
         //os.stdout("'%s'\n", encryptedString)
-        fmt.Printf("'%s'\n", encryptedString)
+        //fmt.Printf("'%s'\n", encryptedString)
         //fmt.Printf("Salida: '%s'\n", encryptedString)
 
     } else if encryptionFlag == "-d" {
