@@ -10,6 +10,8 @@ import (
     "crypto/rand"
     "encoding/base64"
     "io"
+    "net/http"
+    "io/ioutil"
 	"errors"
 	"strings"
 )
@@ -206,7 +208,7 @@ func main() {
 
 		encryptedString, _ := encryptString(stringToEncrypt,encryptionKey)
 		// añado subir ficheros cifrados a ipfs 
-		sh := shell.NewShell("localhost:5001")
+		sh := shell.NewShell("localhost:5002")
 		cid, err := sh.Add(strings.NewReader(encryptedString))
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "error: %s", err)
@@ -214,16 +216,38 @@ func main() {
 		}
         fmt.Printf("Subido '%s'\n", cid)
         //os.stdout("%s", cid)
-		fmt.Printf("https://ipfs.io/ipfs/QmVvda3bw7kpViHQZaJFM23fH1jz8B6G2Qn6Sw7iEuBSHZ \n")
+		//fmt.Printf("https://gateway.pinata.cloud/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog \n")
         //os.stdout("'%s'\n", encryptedString)
         fmt.Printf("'%s'\n", encryptedString)
         //fmt.Printf("Salida: '%s'\n", encryptedString)
 
     } else if encryptionFlag == "-d" {
         // Decrypt!
-
         //fmt.Printf("Decrypting '%s' with key '%s'\n", stringToEncrypt, encryptionKey)
+////////
+response, err := http.Get("https://gateway.pinata.cloud/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog")
+if err != nil {
+    fmt.Printf("%s", err)
+    os.Exit(1)
+} else {
+    defer response.Body.Close()
+    contents, err := ioutil.ReadAll(response.Body)
+    if err != nil {
+        fmt.Printf("%s", err)
+        os.Exit(1)
+    }
+    leer := string(contents)
+    //fmt.Println(strings.Index(leer, "Q"))
+    //i := strings.Index(leer, "")
+    //chars := leer[:i]
+    //arefun := leer[i+1:]
+    fmt.Println("esto es txt %s",leer) //chars)
+    //fmt.Println(arefun)
+    //fmt.Printf("%s\n", string(contents))
+    stringToEncrypt = leer
+}
 
+////////
         decryptedString, _ := decryptString(stringToEncrypt,encryptionKey)
         fmt.Printf("'%s'\n", decryptedString)
         //fmt.Printf("Salida: '%s'\n", decryptedString)
