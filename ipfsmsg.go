@@ -2,6 +2,7 @@ package main
 
 import (
     "fmt"
+    "log"
 	"os"
 	shell "github.com/ipfs/go-ipfs-api"
     "crypto/sha256"
@@ -214,9 +215,9 @@ func main() {
 			fmt.Fprintf(os.Stderr, "error: %s", err)
 			os.Exit(1)
 		}
-        fmt.Printf("'%s'\n", cid)
+        log.Printf("'%s'\n", cid)
         //os.stdout("%s", cid)
-		//fmt.Printf("https://gateway.pinata.cloud/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog \n")
+	//fmt.Printf("https://gateway.pinata.cloud/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog \n")
         //os.stdout("'%s'\n", encryptedString)
         //fmt.Printf("'%s'\n", encryptedString)
         //fmt.Printf("Salida: '%s'\n", encryptedString)
@@ -241,7 +242,7 @@ if err != nil {
     //i := strings.Index(leer, "")
     //chars := leer[:i]
     //arefun := leer[i+1:]
-    fmt.Println("esto es txt %s",leer) //chars)
+    //log.Println("esto es txt %s",leer) //chars)
     //fmt.Println(arefun)
     //fmt.Printf("%s\n", string(contents))
     stringToEncrypt = leer
@@ -249,7 +250,7 @@ if err != nil {
 
 ////////
         decryptedString, _ := decryptString(stringToEncrypt,encryptionKey)
-        fmt.Printf("'%s'\n", decryptedString)
+        log.Printf("'%s'\n", decryptedString)
         //fmt.Printf("Salida: '%s'\n", decryptedString)
 
     }
