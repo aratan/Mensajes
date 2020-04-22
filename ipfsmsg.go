@@ -225,8 +225,10 @@ func main() {
     } else if encryptionFlag == "-d" {
         // Decrypt!
         //fmt.Printf("Decrypting '%s' with key '%s'\n", stringToEncrypt, encryptionKey)
-////////
-response, err := http.Get("https://gateway.pinata.cloud/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog")
+////gateway.pinata.cloud////
+//response, err := http.Get("https://ipfs.io/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog")
+//response, err := http.Get("https://gateway.pinata.cloud/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog")
+response, err := http.Get("http://localhost:8080/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog")
 if err != nil {
     fmt.Printf("%s", err)
     os.Exit(1)
