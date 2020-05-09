@@ -2,7 +2,6 @@ package main
 
 import (
     "fmt"
-    "log"
 	"os"
 	shell "github.com/ipfs/go-ipfs-api"
     "crypto/sha256"
@@ -11,10 +10,10 @@ import (
     "crypto/rand"
     "encoding/base64"
     "io"
-    "net/http"
-    "io/ioutil"
 	"errors"
 	"strings"
+	"net/http"
+	"io/ioutil"
 )
 
 // Toma dos cadenas, cryptoText y keyString.
@@ -215,45 +214,37 @@ func main() {
 			fmt.Fprintf(os.Stderr, "error: %s", err)
 			os.Exit(1)
 		}
-        log.Printf("'%s'\n", cid)
+        fmt.Printf("Subido '%s'\n", cid)
         //os.stdout("%s", cid)
-	//fmt.Printf("https://gateway.pinata.cloud/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog \n")
+        fmt.Println("Funcional??? \n")
+		fmt.Printf("https://ipfs.io/ipfs/%s \n", cid)
         //os.stdout("'%s'\n", encryptedString)
-        //fmt.Printf("'%s'\n", encryptedString)
+        fmt.Printf("'%s'\n", encryptedString)
         //fmt.Printf("Salida: '%s'\n", encryptedString)
 
     } else if encryptionFlag == "-d" {
-        // Decrypt!
-        //fmt.Printf("Decrypting '%s' with key '%s'\n", stringToEncrypt, encryptionKey)
-////gateway.pinata.cloud////
-//response, err := http.Get("https://ipfs.io/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog")
-//response, err := http.Get("https://gateway.pinata.cloud/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog")
-response, err := http.Get("http://localhost:8080/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog")
-if err != nil {
-    fmt.Printf("%s", err)
-    os.Exit(1)
-} else {
-    defer response.Body.Close()
-    contents, err := ioutil.ReadAll(response.Body)
-    if err != nil {
-        fmt.Printf("%s", err)
-        os.Exit(1)
-    }
-    leer := string(contents)
-    //fmt.Println(strings.Index(leer, "Q"))
-    //i := strings.Index(leer, "")
-    //chars := leer[:i]
-    //arefun := leer[i+1:]
-    //log.Println("esto es txt %s",leer) //chars)
-    //fmt.Println(arefun)
-    //fmt.Printf("%s\n", string(contents))
-    stringToEncrypt = leer
-}
-
-////////
+	// **********************************************************
+	response, err := http.Get("https://ipfs.io/ipns/QmUgddgEc71BH5movhDtLJ91tGy3pKs5iUEgsa69ewCNog/")
+	if err != nil {
+	fmt.Printf("%s", err)
+	os.Exit(1)
+	} else {
+	defer response.Body.Close()
+	contents, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		fmt.Printf("%s", err)
+		os.Exit(1)
+	}
+	leer := string(contents)
+	fmt.Printf("%s\n", string(leer))
+	stringToEncrypt = leer
+	}
+	//***********************************************************
         decryptedString, _ := decryptString(stringToEncrypt,encryptionKey)
-        log.Printf("'%s'\n", decryptedString)
-        //fmt.Printf("Salida: '%s'\n", decryptedString)
+        fmt.Printf("%s\n", decryptedString)
+        //fmt.Printf("Salida: %s\n", decryptedString)
+	}
+	
+	}
 
-    }
-}
+
